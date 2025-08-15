@@ -3,7 +3,7 @@ package _core
 interface Constantes {
 
     companion object {
-        val path = System.getProperty("user.dir")
+        val path: String = System.getProperty("user.dir")
 
         //Capabilities Android
         val platformName_value = "Android"

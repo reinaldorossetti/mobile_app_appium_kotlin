@@ -1,20 +1,28 @@
-package _core
+package qa.reinaldo._core
 
-import io.appium.java_client.AppiumDriver
-import io.appium.java_client.MobileElement
-import io.appium.java_client.pagefactory.AppiumFieldDecorator
 import org.openqa.selenium.By
-import org.openqa.selenium.support.PageFactory
 import org.openqa.selenium.support.ui.ExpectedConditions
 import org.openqa.selenium.support.ui.WebDriverWait
-import java.time.Duration
+import org.openqa.selenium.WebElement
+// import your Capabilities class from the correct package, for example:
+import qa.reinaldo._core.Capabilities
+import io.appium.java_client.pagefactory.AppiumElementLocatorFactory
 
 open class BaseScreen : Capabilities() {
 
-    private val driver: AppiumDriver<MobileElement>? = Capabilities.Companion.inicializarAppiumDriver()
-    open var wait = WebDriverWait(driver, 30)
+    open var wait = WebDriverWait(driver, java.time.Duration.ofSeconds(30))
 
-    fun click(element: MobileElement?) {
+    fun click(by: By?) {
+        try {
+            val element = by?.let { driver?.findElement(it) }
+            wait.until(ExpectedConditions.elementToBeClickable(element)).click()
+        } catch (e: Exception) {
+            val element = by?.let { driver?.findElement(it) }
+            wait.until(ExpectedConditions.visibilityOf(element)).click()
+        }
+    }
+
+    fun click(element: WebElement?) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element)).click()
         } catch (e: Exception) {
@@ -22,15 +30,7 @@ open class BaseScreen : Capabilities() {
         }
     }
 
-    fun click(element: By) {
-        try {
-            wait.until(ExpectedConditions.elementToBeClickable(element)).click()
-        } catch (e: Exception) {
-            wait.until(ExpectedConditions.presenceOfElementLocated(element)).click()
-        }
-    }
-
-    fun sendKeys(element: MobileElement?, text: String?) {
+    fun sendKeys(element: WebElement?, text: String?) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(text)
         } catch (e: Exception) {
@@ -38,7 +38,4 @@ open class BaseScreen : Capabilities() {
         }
     }
 
-    init {
-        PageFactory.initElements(AppiumFieldDecorator(driver, Duration.ofSeconds(30)), this)
-    }
 }

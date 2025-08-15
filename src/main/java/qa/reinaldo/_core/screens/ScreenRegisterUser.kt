@@ -1,32 +1,32 @@
 package qa.reinaldo._core.screens
 
-import _core.BaseScreen
-import io.appium.java_client.MobileElement
+import qa.reinaldo._core.BaseScreen
 import io.appium.java_client.pagefactory.AndroidFindBy
 import io.appium.java_client.pagefactory.iOSXCUITFindBy
+import org.openqa.selenium.WebElement
 
 
 class ScreenRegisterUser : BaseScreen() {
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/login_botao_cadastrar_usuario")
-    lateinit var cadastrarUsuario: MobileElement
+    lateinit var cadastrarUsuario: WebElement
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_nome")
-    private lateinit var nome: MobileElement
+    private lateinit var nome: WebElement
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_senha")
-    private lateinit var senha: MobileElement
+    private lateinit var senha: WebElement
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_confirmar_senha")
-    private lateinit var confirmarSenha: MobileElement
+    private lateinit var confirmarSenha: WebElement
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/cadastro_usuario_botao_cadastrar")
-    private lateinit var cadastrar: MobileElement
+    private lateinit var cadastrar: WebElement
 
     fun cadastrarUsuario() {
         cadastrarUsuario.click()

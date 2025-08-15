@@ -1,34 +1,34 @@
 package qa.reinaldo._core.screens
 
-import _core.BaseScreen
-import io.appium.java_client.MobileElement
+import qa.reinaldo._core.BaseScreen
 import io.appium.java_client.pagefactory.AndroidFindBy
 import io.appium.java_client.pagefactory.iOSXCUITFindBy
+import org.openqa.selenium.WebElement
 
-class ScreenLogin : BaseScreen() {
+open class ScreenLogin : BaseScreen() {
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_usuario")
-    private lateinit var idDoUsuario: MobileElement
+    lateinit var idDoUsuario: WebElement 
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_senha")
-    private lateinit var senha: MobileElement
+    lateinit var senha: WebElement 
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/login_botao_logar")
-    lateinit var logar: MobileElement
+    lateinit var logar: WebElement 
 
     @iOSXCUITFindBy(id = "")
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/mensagem_erro_login")
-    private lateinit var usuarioSenhaInvalidos: MobileElement
+    lateinit var usuarioSenhaInvalidos: WebElement 
 
     fun preencherIdDoUsuario(text: String?) {
         sendKeys(idDoUsuario, text)
     }
 
     fun preencherSenha(text: String?) {
-        senha.setValue(text)
+        senha.sendKeys(text)
     }
 
     fun logar() {
