@@ -98,6 +98,10 @@ RemoteWebElement someElement;
 @iOSFindBy(someStrategy)  //for iOS native UI
 List<RemoteWebElement> someElements;
 ```
+Subir o Appium server com o seguinte comando no terminal:
+```
+appium -p 4723 -a 127.0.0.1 -pa wd/hub --allow-cors
+```
 
 References:  
 solve problem in intellij:  

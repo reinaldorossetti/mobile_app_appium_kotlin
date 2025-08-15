@@ -35,7 +35,7 @@ open class Capabilities : Constantes {
                 driver = AppiumDriver(URL("http://127.0.0.1:4723/wd/hub"), options)
             } catch (e: MalformedURLException) {
                 e.printStackTrace()
-                throw RuntimeException("Falha ao inicializar o driver Appium", e)
+                throw RuntimeException("Falha ao conectar ao Appium MalformedURLException", e)
             } catch (e: Exception) {
                 e.printStackTrace()
                 throw RuntimeException("Erro inesperado ao criar o driver", e)

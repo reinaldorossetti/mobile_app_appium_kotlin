@@ -23,16 +23,10 @@ import org.openqa.selenium.WebElement
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class TestsRunner {
 
-    var driver: AppiumDriver? = null
     var screenRegisterUser = ScreenRegisterUser()
     var user = User()
     var produto = Produto()
     val screenLogin = ScreenLogin()
-
-    @BeforeEach
-    fun iniciar() {
-        driver = Capabilities.inicializarAppiumDriver()
-    }
 
     @AfterEach
     fun finalizar() {

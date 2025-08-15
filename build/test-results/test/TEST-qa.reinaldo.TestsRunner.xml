@@ -1,64 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="qa.reinaldo.TestsRunner" tests="5" skipped="0" failures="5" errors="0" timestamp="2025-08-15T19:33:45.033Z" hostname="PC-GAMER-REINAL" time="28.135">
+<testsuite name="qa.reinaldo.TestsRunner" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-08-15T20:21:27.583Z" hostname="PC-GAMER-REINAL" time="55.097">
   <properties/>
-  <testcase name="CT01 - Teste que realiza o cadastro de usuario." classname="qa.reinaldo.TestsRunner" time="6.44">
-    <failure message="kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized" type="kotlin.UninitializedPropertyAccessException">kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized
-	at qa.reinaldo._core.screens.ScreenRegisterUser.getCadastrarUsuario(ScreenRegisterUser.kt:13)
-	at qa.reinaldo._core.screens.ScreenRegisterUser.cadastrarUsuario(ScreenRegisterUser.kt:32)
-	at qa.reinaldo.TestsRunner.testeCadastrarUsuario(TestsRunner.kt:53)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-</failure>
-  </testcase>
-  <testcase name="loginUsuarioSenhaInvalidos()" classname="qa.reinaldo.TestsRunner" time="5.5">
-    <failure message="org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;org.opentest4j.AssertionFailedError&gt; but was: &lt;kotlin.UninitializedPropertyAccessException&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: &lt;org.opentest4j.AssertionFailedError&gt; but was: &lt;kotlin.UninitializedPropertyAccessException&gt;
-	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
-	at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
-	at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at app//qa.reinaldo.TestsRunner.loginUsuarioSenhaInvalidos(TestsRunner.kt:70)
-	at java.base@17.0.12/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base@17.0.12/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base@17.0.12/java.util.ArrayList.forEach(ArrayList.java:1511)
-Caused by: kotlin.UninitializedPropertyAccessException: lateinit property idDoUsuario has not been initialized
-	at qa.reinaldo._core.screens.ScreenLogin.getIdDoUsuario(ScreenLogin.kt:12)
-	at qa.reinaldo._core.screens.ScreenLogin.preencherIdDoUsuario(ScreenLogin.kt:27)
-	at qa.reinaldo.TestsRunner.loginUsuarioSenhaInvalidos$lambda$0(TestsRunner.kt:74)
-	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
-	... 6 more
-</failure>
-  </testcase>
-  <testcase name="testeLogin()" classname="qa.reinaldo.TestsRunner" time="5.285">
-    <failure message="kotlin.UninitializedPropertyAccessException: lateinit property idDoUsuario has not been initialized" type="kotlin.UninitializedPropertyAccessException">kotlin.UninitializedPropertyAccessException: lateinit property idDoUsuario has not been initialized
-	at qa.reinaldo._core.screens.ScreenLogin.getIdDoUsuario(ScreenLogin.kt:12)
-	at qa.reinaldo._core.screens.ScreenLogin.preencherIdDoUsuario(ScreenLogin.kt:27)
-	at qa.reinaldo.TestsRunner.testeLogin(TestsRunner.kt:93)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-</failure>
-  </testcase>
-  <testcase name="testComprarProduto()" classname="qa.reinaldo.TestsRunner" time="5.422">
-    <failure message="kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized" type="kotlin.UninitializedPropertyAccessException">kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized
-	at qa.reinaldo._core.screens.ScreenRegisterUser.getCadastrarUsuario(ScreenRegisterUser.kt:13)
-	at qa.reinaldo._core.screens.ScreenRegisterUser.cadastrarUsuario(ScreenRegisterUser.kt:32)
-	at qa.reinaldo.TestsRunner.testComprarProduto(TestsRunner.kt:102)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-</failure>
-  </testcase>
-  <testcase name="testLogout()" classname="qa.reinaldo.TestsRunner" time="5.383">
-    <failure message="kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized" type="kotlin.UninitializedPropertyAccessException">kotlin.UninitializedPropertyAccessException: lateinit property cadastrarUsuario has not been initialized
-	at qa.reinaldo._core.screens.ScreenRegisterUser.getCadastrarUsuario(ScreenRegisterUser.kt:13)
-	at qa.reinaldo._core.screens.ScreenRegisterUser.cadastrarUsuario(ScreenRegisterUser.kt:32)
-	at qa.reinaldo.TestsRunner.testLogout(TestsRunner.kt:132)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-</failure>
-  </testcase>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="CT01 - Teste que realiza o cadastro de usuario." classname="qa.reinaldo.TestsRunner" time="4.993"/>
+  <testcase name="loginUsuarioSenhaInvalidos()" classname="qa.reinaldo.TestsRunner" time="3.637"/>
+  <testcase name="testeLogin()" classname="qa.reinaldo.TestsRunner" time="3.402"/>
+  <testcase name="testComprarProduto()" classname="qa.reinaldo.TestsRunner" time="14.148"/>
+  <testcase name="testLogout()" classname="qa.reinaldo.TestsRunner" time="8.041"/>
+  <system-out><![CDATA[Usuário ou senha inválidos
+No cenario de teste 'Comprar Produto', o sistema esta apresentando a seguinte notificacao: <<<Falha ao criar pagamento>>> propositalmente.
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -31,9 +31,11 @@ class ScreenShopping : BaseScreen() {
     private lateinit var confirmarPagamento: WebElement
 
     fun produto(text: String) {
-        val WebElement =
-            "new UiSelector().resourceId(\"br.com.alura.aluraesporte:id/item_produto_nome\").textContains(\"$text\")"
-        click(ByAll(By.id("br.com.alura.aluraesporte:id/item_produto_nome"), By.xpath(WebElement)))
+        val byUiAutomator = ByAll(
+            By.xpath("//android.widget.TextView[contains(@text, '$text')]")
+        )
+        val elements = driver?.findElements(byUiAutomator)
+        elements?.get(0)?.let { click(it) }
     }
 
     fun comprar() {
