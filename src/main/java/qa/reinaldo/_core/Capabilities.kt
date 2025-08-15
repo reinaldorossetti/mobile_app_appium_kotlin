@@ -2,13 +2,14 @@ package qa.reinaldo._core
 
 import _core.Constantes
 import io.appium.java_client.AppiumDriver
-import io.appium.java_client.remote.options.BaseOptions
-import org.openqa.selenium.MutableCapabilities
+import io.appium.java_client.android.options.UiAutomator2Options
+import org.openqa.selenium.support.ui.WebDriverWait
 import java.net.MalformedURLException
 import java.net.URL
 import java.time.Duration
 
 open class Capabilities : Constantes {
+
     companion object {
         var driver: AppiumDriver? = null
         
@@ -20,7 +21,7 @@ open class Capabilities : Constantes {
         }
         
         fun createDriver() {
-            val options = io.appium.java_client.android.options.UiAutomator2Options()
+            val options = UiAutomator2Options()
                 .setPlatformName(Constantes.platformName_value)
                 .setDeviceName(Constantes.deviceName_value)
                 .setAutomationName(Constantes.automationName_value)
@@ -49,15 +50,6 @@ open class Capabilities : Constantes {
                 e.printStackTrace()
             } finally {
                 driver = null
-            }
-        }
-        
-        // Método auxiliar para verificar se o driver está ativo
-        fun isDriverActive(): Boolean {
-            return try {
-                driver?.sessionId != null
-            } catch (e: Exception) {
-                false
             }
         }
     }

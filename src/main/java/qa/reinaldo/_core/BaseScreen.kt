@@ -11,11 +11,12 @@ import java.time.Duration
 
 open class BaseScreen : Capabilities() {
     val driver: AppiumDriver? = inicializarAppiumDriver()
-    protected val wait = WebDriverWait(driver, Duration.ofSeconds(30))
+    private val wait = WebDriverWait(driver, Duration.ofSeconds(30))
 
     init {
         PageFactory.initElements(AppiumFieldDecorator(driver), this)
     }
+
     fun click(element: WebElement) {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element)).click()

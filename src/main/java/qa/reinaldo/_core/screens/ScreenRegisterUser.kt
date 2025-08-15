@@ -28,8 +28,9 @@ class ScreenRegisterUser : BaseScreen() {
     @AndroidFindBy(id = "br.com.alura.aluraesporte:id/cadastro_usuario_botao_cadastrar")
     private lateinit var cadastrar: WebElement
 
-    fun cadastrarUsuario() {
+    fun cadastrarUsuario(): ScreenRegisterUser {
         cadastrarUsuario.click()
+        return this
     }
 
     fun nome(text: String?): ScreenRegisterUser {
