@@ -3,7 +3,7 @@
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9.x-blue.svg?logo=kotlin)
 ![Appium](https://img.shields.io/badge/Appium-2.x-green.svg?logo=appium)
 ![JUnit5](https://img.shields.io/badge/JUnit-5-blue.svg?logo=junit5)
-![Maven](https://img.shields.io/badge/Maven-3.x-red.svg?logo=apache-maven)
+![Gradle](https://img.shields.io/badge/Gradle-8.x-blue.svg?logo=gradle)
 ![Allure](https://img.shields.io/badge/Allure-Report-orange.svg?logo=allure-framework)
 
 ## 📖 Descrição
@@ -29,7 +29,7 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
 *   **Linguagem:** [Kotlin](https://kotlinlang.org/)
 *   **Test Runner:** [JUnit 5](https://junit.org/junit5/)
 *   **Automação Mobile:** [Appium](http://appium.io/)
-*   **Build & Dependências:** [Maven](https://maven.apache.org/)
+*   **Build & Dependências:** [Gradle](https://gradle.org/)
 *   **Relatórios:** [Allure Framework](https://allurereport.org/)
 
 ---
@@ -49,6 +49,7 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
 1.  **Configure as Variáveis de Ambiente:**
     *   `JAVA_HOME`: Caminho para a instalação do JDK (ex: `C:\Program Files\Java\jdk-11`).
     *   `ANDROID_HOME`: Caminho para o SDK do Android (ex: `C:\Users\SEU_USUARIO\AppData\Local\Android\Sdk`).
+    *   `GRADLE_HOME`: Caminho para a instalação do Gradle (ex: `C:\Gradle\gradle-8.5`).
 
 2.  **Adicione as seguintes entradas ao `Path` do sistema:**
     *   `%JAVA_HOME%\bin`
@@ -56,6 +57,7 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
     *   `%ANDROID_HOME%\platform-tools`
     *   `%ANDROID_HOME%\tools`
     *   `%ANDROID_HOME%\tools\bin`
+    *   `%GRADLE_HOME%\bin`
 
 ---
 
@@ -64,7 +66,10 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
 1.  **Inicie o Appium Server:**
     *   Abra um terminal e execute o comando:
         ```bash
-        appium
+        npm install -g appium 
+        appium driver install uiautomator2
+        appium driver update uiautomator2
+        appium -p 4723 -a 127.0.0.1 -pa wd/hub --allow-cors
         ```
 
 2.  **Inicie o Emulador Android:**
@@ -77,12 +82,13 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
     ```
 
 4.  **Execute os Testes:**
-    *   **Via Terminal (Maven):**
+    *   **Via Terminal (Gradle):**
+        *   No Windows, use o Gradle Wrapper para executar os testes.
         ```bash
-        mvn clean test
+        gradlew clean test
         ```
     *   **Via IDE (IntelliJ/Android Studio):**
-        *   Importe o projeto como um projeto Maven.
+        *   Importe o projeto como um projeto Gradle.
         *   Aguarde o download das dependências.
         *   Navegue até a classe de teste em `src/test/java` e execute-a.
 
@@ -111,7 +117,9 @@ mobile_app_appium_kotlin/
 │               └── reinaldo/
 │                   └── tests/            # Classes de teste com os cenários
 │                       └── LoginTest.kt
-├── pom.xml                               # Dependências e plugins do Maven
+├── build.gradle.kts                      # Dependências e plugins do Gradle
+├── gradlew                               # Gradle Wrapper (Linux/Mac)
+├── gradlew.bat                           # Gradle Wrapper (Windows)
 └── README.md
 ```
 
@@ -131,6 +139,8 @@ open class BaseScreen {
     fun click(element: WebElement) {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click()
     }
+
+
 
     fun sendKeys(element: WebElement?, text: String?) {
         wait.until(ExpectedConditions.visibilityOf(element)).sendKeys(text)
@@ -166,16 +176,17 @@ class ScreenLogin : BaseScreen() {
 
 ## 📊 Relatórios com Allure
 
-Após a execução dos testes com o Maven, gere e visualize o relatório de resultados do Allure.
+Após a execução dos testes com o Gradle, gere e visualize o relatório de resultados do Allure.
 
 1.  **Gerar o Relatório:**
     ```bash
-    mvn allure:report
+    gradle test
+    gradle allureReport
     ```
 
 2.  **Servir o Relatório (abre no navegador):**
     ```bash
-    mvn allure:serve
+    ./gradlew allureServe
     ```
 
 ---
