@@ -1,7 +1,8 @@
 # Automação de Testes Mobile com Kotlin e Appium 🚀
 
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9.x-blue.svg?logo=kotlin)
-![Appium](https://img.shields.io/badge/Appium-2.x-green.svg?logo=appium)
+![Appium](https://img.shields.io/badge/Appium-9.4.0-green.svg?logo=appium)
+![Selenium](https://img.shields.io/badge/Selenium-4.33.0-blue.svg)
 ![JUnit5](https://img.shields.io/badge/JUnit-5-blue.svg?logo=junit5)
 ![Gradle](https://img.shields.io/badge/Gradle-8.x-blue.svg?logo=gradle)
 ![Allure](https://img.shields.io/badge/Allure-Report-orange.svg?logo=allure-framework)
@@ -28,7 +29,8 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
 
 *   **Linguagem:** [Kotlin](https://kotlinlang.org/)
 *   **Test Runner:** [JUnit 5](https://junit.org/junit5/)
-*   **Automação Mobile:** [Appium](http://appium.io/)
+*   **Automação Mobile:** [Appium (Java Client) 9.4.0](http://appium.io/)
+*   **Suporte de Automação:** [Selenium 4.33.0](https://www.selenium.dev/)
 *   **Build & Dependências:** [Gradle](https://gradle.org/)
 *   **Relatórios:** [Allure Framework](https://allurereport.org/)
 
@@ -66,9 +68,6 @@ O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
 1.  **Inicie o Appium Server:**
     *   Abra um terminal e execute o comando:
         ```bash
-        npm install -g appium 
-        appium driver install uiautomator2
-        appium driver update uiautomator2
         appium -p 4723 -a 127.0.0.1 -pa wd/hub --allow-cors
         ```
 
@@ -122,6 +121,23 @@ mobile_app_appium_kotlin/
 ├── gradlew.bat                           # Gradle Wrapper (Windows)
 └── README.md
 ```
+
+---
+
+## 🏗️ Entendendo o `build.gradle.kts`
+
+O arquivo `build.gradle.kts` é o coração do gerenciamento de dependências e build do projeto. Ele usa a sintaxe do Kotlin (Kotlin DSL) para definir como o projeto é construído e quais bibliotecas ele utiliza.
+
+*   **`plugins { ... }`**: Ativa funcionalidades extras. `kotlin("jvm")` adiciona o suporte a Kotlin e `io.qameta.allure` integra o Allure para geração de relatórios.
+
+*   **`repositories { ... }`**: Define de onde o Gradle deve baixar as bibliotecas. `mavenCentral()` é o repositório público mais comum.
+
+*   **`dependencies { ... }`**: Aqui listamos todas as bibliotecas (dependências) do projeto. As principais são:
+    *   `implementation("io.appium:java-client:9.4.0")`: Cliente Java do **Appium** para interagir com o servidor e os dispositivos.
+    *   `implementation("org.seleniumhq.selenium:selenium-java:4.33.0")`: **Selenium**, do qual o Appium depende para muitas de suas funcionalidades base, como `WebDriverWait` e `ExpectedConditions`.
+    *   `testImplementation(...)`: Define bibliotecas usadas apenas para testes, como **JUnit 5** e **Allure**.
+
+*   **`tasks.test { ... }`**: Configura como os testes são executados. `useJUnitPlatform()` instrui o Gradle a usar o JUnit 5 como a plataforma de testes.
 
 ---
 
@@ -180,13 +196,12 @@ Após a execução dos testes com o Gradle, gere e visualize o relatório de res
 
 1.  **Gerar o Relatório:**
     ```bash
-    gradle test
-    gradle allureReport
+    gradlew allureReport
     ```
 
 2.  **Servir o Relatório (abre no navegador):**
     ```bash
-    ./gradlew allureServe
+    gradlew allureServe
     ```
 
 ---
