@@ -1,193 +1,187 @@
-Exemplo: Testes Mobile com Kotlin + Appium + JUnit + Allure 🚀
+# Automação de Testes Mobile com Kotlin e Appium 🚀
 
-### Descrição:
+![Kotlin](https://img.shields.io/badge/Kotlin-1.9.x-blue.svg?logo=kotlin)
+![Appium](https://img.shields.io/badge/Appium-2.x-green.svg?logo=appium)
+![JUnit5](https://img.shields.io/badge/JUnit-5-blue.svg?logo=junit5)
+![Maven](https://img.shields.io/badge/Maven-3.x-red.svg?logo=apache-maven)
+![Allure](https://img.shields.io/badge/Allure-Report-orange.svg?logo=allure-framework)
 
-Este repositório contém um exemplo de automação mobile para Android usando Kotlin, Appium, JUnit e Allure Report.
-O objetivo é demonstrar o uso de seletores nativos do Android (UiSelector) em vez de XPATH, reduzindo complexidade e aumentando estabilidade dos testes.
-Exemplo baseado na APK alura_esporte.
+## 📖 Descrição
+
+Este repositório é um projeto de exemplo para automação de testes mobile em Android, utilizando uma stack moderna com **Kotlin, Appium, JUnit 5 e Allure Reports**. O foco é demonstrar a implementação do padrão **Page Object Model** e o uso de boas práticas para criar testes estáveis e de fácil manutenção.
+
+O aplicativo de exemplo utilizado para os testes é o **Alura Esporte**.
+
+---
+
+## ✅ Cenários de Teste
+
+-   [x] Cadastro de novo usuário
+-   [x] Login com credenciais inválidas
+-   [x] Login com sucesso
+-   [x] Lógica de compra de produto
+-   [x] Logout da aplicação
 
-Cenários de teste identificados ✅
+---
 
-### Cadastrar Usuário
-### Login com credenciais inválidas
-### Login bem-sucedido
-### Comprar produto
-### Logout
+## 🛠️ Tecnologias Utilizadas
 
-### Pré-requisitos (instalação) 🛠️
+*   **Linguagem:** [Kotlin](https://kotlinlang.org/)
+*   **Test Runner:** [JUnit 5](https://junit.org/junit5/)
+*   **Automação Mobile:** [Appium](http://appium.io/)
+*   **Build & Dependências:** [Maven](https://maven.apache.org/)
+*   **Relatórios:** [Allure Framework](https://allurereport.org/)
+
+---
 
-Java 8 (JDK) — https://www.java.com/pt-BR/download/iemanual.jsp?locale=ptBR
-Android Studio — https://developer.android.com/studio
+## ⚙️ Pré-requisitos
+
+*   **Java (JDK)**: Versão 11 ou superior.
+*   **Android Studio**: Para o SDK do Android e gerenciamento de emuladores.
+*   **Appium Server**: `npm install -g appium`
+*   **Appium Drivers**: `appium driver install uiautomator2`
+*   **IDE**: IntelliJ IDEA ou Android Studio.
 
-Eclipse IDE ou outra IDE de sua preferência (IntelliJ/Android Studio recomendado) — https://www.eclipse.org/downloads/
+---
 
-Appium Desktop (versão recomendada 1.20.2 ou compatível) — https://github.com/appium/appium-desktop/releases
-Maven (gerenciador de dependências) — https://maven.apache.org/
+## 셋 Ambiente de Desenvolvimento (Windows)
 
-Configuração do ambiente (Windows) ⚙️
+1.  **Configure as Variáveis de Ambiente:**
+    *   `JAVA_HOME`: Caminho para a instalação do JDK (ex: `C:\Program Files\Java\jdk-11`).
+    *   `ANDROID_HOME`: Caminho para o SDK do Android (ex: `C:\Users\SEU_USUARIO\AppData\Local\Android\Sdk`).
 
-Variáveis de sistema recomendadas:
-JAVA_HOME = C:\Program Files\Java\jdk1.8.x (ajuste conforme sua instalação)
-ANDROID_HOME = C:\Users\\AppData\Local\Android\Sdk
-Adicione ao PATH:
-%JAVA_HOME%\bin
-%ANDROID_HOME%\emulator
-%ANDROID_HOME%\platform-tools
-%ANDROID_HOME%\tools\bin
+2.  **Adicione as seguintes entradas ao `Path` do sistema:**
+    *   `%JAVA_HOME%\bin`
+    *   `%ANDROID_HOME%\emulator`
+    *   `%ANDROID_HOME%\platform-tools`
+    *   `%ANDROID_HOME%\tools`
+    *   `%ANDROID_HOME%\tools\bin`
 
-Passo a passo para iniciar (setup inicial) ▶️
+---
 
-Instale as dependências listadas nos pré-requisitos.
+## ▶️ Executando o Projeto
 
-Configure as variáveis de ambiente (JAVAHOME, ANDROIDHOME).
+1.  **Inicie o Appium Server:**
+    *   Abra um terminal e execute o comando:
+        ```bash
+        appium
+        ```
 
-Inicie o Appium Server: (ver seção comando Appium abaixo).
-Abra o emulador Android ou conecte um dispositivo físico (USB + depuração USB ativada).
+2.  **Inicie o Emulador Android:**
+    *   Abra o Android Studio, vá para o **Device Manager** e inicie um emulador com uma API recente.
 
-Clone o repositório e importe o projeto na IDE (Eclipse, IntelliJ ou Android Studio).
+3.  **Clone o Repositório:**
+    ```bash
+    git clone <URL_DO_SEU_REPOSITORIO>
+    cd mobile_app_appium_kotlin
+    ```
 
-Executando os testes (via terminal) 🧪
+4.  **Execute os Testes:**
+    *   **Via Terminal (Maven):**
+        ```bash
+        mvn clean test
+        ```
+    *   **Via IDE (IntelliJ/Android Studio):**
+        *   Importe o projeto como um projeto Maven.
+        *   Aguarde o download das dependências.
+        *   Navegue até a classe de teste em `src/test/java` e execute-a.
 
-Para rodar os testes via Maven no terminal:
+---
 
-mvn clean -Dtest=Runner test
+## 📂 Estrutura do Projeto
 
-Executando pela IDE
+O projeto segue uma estrutura organizada para separar responsabilidades, facilitando a manutenção.
 
-Importe o projeto para a IDE.
+```
+mobile_app_appium_kotlin/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── qa/
+│   │           └── reinaldo/
+│   │               ├── _core/            # Classes base e configuração do driver
+│   │               │   ├── BaseScreen.kt
+│   │               │   └── DriverFactory.kt
+│   │               └── screens/          # Page Objects de cada tela
+│   │                   ├── ScreenLogin.kt
+│   │                   └── ScreenRegisterUser.kt
+│   └── test/
+│       └── java/
+│           └── qa/
+│               └── reinaldo/
+│                   └── tests/            # Classes de teste com os cenários
+│                       └── LoginTest.kt
+├── pom.xml                               # Dependências e plugins do Maven
+└── README.md
+```
 
-Localize a classe de suíte (ex.: Suite.java ou Runner).
+---
 
-Clique com o botão direito -> Run As -> JUnit Test.
+## 💻 Exemplos de Código
 
-Comando para iniciar o Appium Server 🖥️
+### BaseScreen (Core)
 
-Comando sugerido (ajuste conforme sua instalação do Appium):
+A classe `BaseScreen` centraliza ações comuns como `click` e `sendKeys`, utilizando esperas explícitas para maior estabilidade.
 
-appium -p 4723 -a 127.0.0.1 --base-path /wd/hub --allow-cors
+```kotlin
+// filepath: src/main/java/qa/reinaldo/_core/BaseScreen.kt
+open class BaseScreen {
+    // ... inicialização do driver e PageFactory ...
 
-Observação: em versões mais antigas a flag podia ser -pa wd/hub; a forma mais atual é --base-path /wd/hub.
+    fun click(element: WebElement) {
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click()
+    }
 
-Boas práticas e recomendações ✅
+    fun sendKeys(element: WebElement?, text: String?) {
+        wait.until(ExpectedConditions.visibilityOf(element)).sendKeys(text)
+    }
+}
+```
 
-Prefira UiSelector para localizar elementos nativos Android ao invés de XPATH quando possível (mais rápido e mais estável).
-Mantenha IDs e resource-ids no app sempre que possível (facilita automação).
-Utilize Page Object Pattern para organizar elementos e ações.
-Integre Allure para relatórios legíveis e com anexos (screenshots, logs).
+### ScreenLogin (Page Object)
 
-Exemplos de UiSelector (Kotlin / Appium) 🔎
+Cada tela é mapeada em uma classe que herda de `BaseScreen`. Os elementos são declarados com anotações do Appium e os métodos representam as ações do usuário.
 
-Localizar por className e textContains:
+```kotlin
+// filepath: src/main/java/qa/reinaldo/_core/screens/ScreenLogin.kt
+class ScreenLogin : BaseScreen() {
 
-"new UiSelector().className(\"android.widget.EditText\").textContains(\"mero cart\")"
+    @AndroidFindBy(id = "br.com.alura.aluraesporte:id/input_usuario")
+    lateinit var idDoUsuario: WebElement
 
-Localizar por className e texto exato:
+    @AndroidFindBy(id = "br.com.alura.aluraesporte:id/login_botao_logar")
+    lateinit var logar: WebElement
 
-"new UiSelector().className(\"android.widget.EditText\").text(\"Data de validade\")"
+    fun preencherIdDoUsuario(text: String?) {
+        sendKeys(idDoUsuario, text)
+    }
 
-Localizar por resourceId e textContains:
+    fun clicarEmLogar() {
+        click(logar)
+    }
+}
+```
 
-"new UiSelector().resourceId(\"br.com.alura.aluraesporte:id/itemprodutonome\").textContains(\"Bola de futebol\")"
+---
 
-Elemento pai e filho:
+## 📊 Relatórios com Allure
 
-"new UiSelector().resourceId(\"XXXX:id/TEST_ID\").childSelector(new UiSelector().className(\"android.widget.LinearLayout\"))"
+Após a execução dos testes com o Maven, gere e visualize o relatório de resultados do Allure.
 
-Uso com listas (ArrayList de MobileElement injeção com PageFactory):
+1.  **Gerar o Relatório:**
+    ```bash
+    mvn allure:report
+    ```
 
-@AndroidFindBy(accessibility = "A")
+2.  **Servir o Relatório (abre no navegador):**
+    ```bash
+    mvn allure:serve
+    ```
 
-@iOSXCUITFindBy(accessibility = "B")
+---
 
-private lateinit var btnArrival0to6: ArrayList
+## 💡 Dicas e Boas Práticas
 
-Exemplo cross-platform (Web + Android + iOS) — Java style
-
-import org.openqa.selenium.remote.RemoteWebElement;
-
-import io.appium.java_client.pagefactory.*;
-
-import org.openqa.selenium.support.FindBy;
-
-// fully cross platform example
-
-@FindBy(someStrategy) // browser / webview
-
-@AndroidFindBy(someStrategy) // Android native
-
-@iOSFindBy(someStrategy) // iOS native
-
-RemoteWebElement someElement;
-
-// list example
-
-@FindBy(someStrategy)
-
-@AndroidFindBy(someStrategy)
-
-@iOSFindBy(someStrategy)
-
-List someElements;
-
-Estrutura recomendada do projeto (sugestão)
-
-src
-main
-kotlin (código compartilhado, utils)
-test
-kotlin
-  - screens (page objects)
-  - tests (suites e testes)
-  - core (setup do AppiumDriver, capabilities, listeners)
-
-resources
-allure-results (gerado em runtime)
-pom.xml (dependências e plugins)
-
-Integração Allure (relatórios) 📊
-
-Configure plugin do Maven para Allure ou gere relatórios via CLI:
-Exemplo de comandos (após execução dos testes):
-
-mvn allure:report
-
-mvn allure:serve
-
-Certifique-se de que os adaptadores do JUnit e allure estão configurados no pom.xml.
-
-Dicas de debugging 🐞
-
-Verifique logs do Appium (console) e do device (adb logcat).
-Faça screenshots nas falhas e anexe ao Allure.
-Teste seletores no UiAutomatorViewer (Android SDK tool) para validar resource-id/class/text.
-
-Problemas comuns e soluções rápidas ⚠️
-
-Problema: driver não conecta ao Appium
-
-Solução: validar host/porta, versão do Appium, e capabilities (deviceName, platformVersion, appPackage, appActivity).
-Problema: elemento não encontrado
-
-Solução: testar outros strategies (resource-id, accessibilityId, UiSelector) e aumentar timeouts/esperas explícitas.
-Problema: permissões no Android
-
-Solução: conceder permissões manualmente ou via adb: adb shell pm grant <package> <permission>
-
-Referências e links úteis 🔗
-
-Kotlin unresolved reference (IDE): https://stackoverflow.com/questions/31712046/kotlin-unresolved-reference-in-intellij
-Appium Java Client docs: https://github.com/appium/java-client/wiki
-Page Objects (Appium Java Client): https://github.com/appium/java-client/blob/master/docs/Page-objects.md
-Allure JUnit5 docs: https://allure.rs/docs/ or https://allurereport.org/docs/junit5/
-
-Contato / Créditos ✉️
-
-Autor: Reinaldo (ajuste conforme necessário)
-Projeto de exemplo para fins educacionais e de demonstração.
-
-Observações finais 📝
-
-Este README foi organizado para servir como guia de implantação e execução passo a passo. Se precisar, posso:
-Gerar o arquivo README.md pronto;
-Ajustar trechos para IntelliJ/Android Studio (se preferir essa IDE);
-Incluir exemplos de capabilities e configuração do pom.xml.
+*   **Seletores:** Dê preferência a seletores de `ID` ou `Accessibility ID`, pois são mais performáticos e resilientes a mudanças na UI do que `XPath`.
+*   **Page Objects:** Mantenha a lógica de interação com a UI (cliques, preenchimento de campos) dentro das classes de tela (screens), e as asserções (`asserts`) dentro das classes de teste.
+*   **Debug:** Utilize o **Appium Inspector** para inspecionar a hierarquia de elementos da tela e validar seus seletores.
